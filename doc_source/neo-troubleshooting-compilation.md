@@ -30,12 +30,12 @@ Attempt to resolve your error by the going through the following steps:
 
 ## Check CloudWatch<a name="neo-troubleshooting-compilation-logs"></a>
 
+When you kick off an Inference Recommender job, you should see endpoints being created in Console. Click through one of the endpoints and view the CloudWatch logs to monitor for any 4xx/5xx errors. If you have a successful Inference Recommender job, you will be able to see the endpoint names as part of the results. Even if your Inference Recommender job is unsuccessful, you can still check CloudWatch logs for the deleted endpoints by following the steps below,
+
 1. Navigate to Amazon CloudWatch at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
 
-1. Select the region you created the compilation job from the **Region** dropdown list in the top right\.
+2. Select the region you created the Inference Recommender job from the **Region** dropdown list in the top right\.
 
-1. In the navigation pane of the Amazon CloudWatch, choose **Logs**\. Select **Log groups**\.
+3. In the navigation pane of the Amazon CloudWatch, choose **Logs**\. Select **Log groups**\.
 
-1. Search for the log group called `/aws/sagemaker/CompilationJobs`\. Select the log group\.
-
-1. Search for the logstream named after the compilation job name\. Select the log stream\.
+4. Search for the log group called `/aws/sagemaker/Endpoints/sm-epc-*`\. Select the log group\.

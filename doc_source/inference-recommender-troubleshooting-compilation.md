@@ -2,11 +2,6 @@
 
 This section contains information about how to understand and prevent common errors, the error messages they generate, and guidance on how to resolve these errors\. 
 
-**Topics**
-+ [How to troubleshoot](#neo-troubleshooting-compilation-how-to-use)
-+ [Common errors](#neo-troubleshooting-compilation-infrastructure-errors)
-+ [Check CloudWatch](#neo-troubleshooting-compilation-logs)
-
 ## How to troubleshoot<a name="neo-troubleshooting-compilation-how-to-use"></a>
 
 Attempt to resolve your error by the going through the following steps:
@@ -24,7 +19,7 @@ Attempt to resolve your error by the going through the following steps:
 |   `Specify Domain in the Model Package version 1. Domain is a mandatory parameter for the job`   |  Make sure you provide the ML Domain or 'OTHER' if unknown.  | 
 |  `Provided role ARN cannot be assumed and an AWSSecurityTokenServiceException error occurred.`  |  Make sure the execution role provided has the necessary permissions.  | 
 |   `Specify Framework in the Model Package version 1. Framework is a mandatory parameter for the job`   |   Make sure you provide the ML Framework or 'OTHER' if unknown.   | 
-|   `Users at the end of prev phase is 0 while initial users of current phase is 1`   |   |
+|   `Users at the end of prev phase is 0 while initial users of current phase is 1`   |  Users here refers to virtual users or threads used to send requests. Each phase starts with A users and ends with B users such that B > A. Between sequential phases, x_1 and x_2, we require that abs(x_2.A - x_1.B) <= 3 and >= 0. |
 |   `Total Traffic duration (across) should not be more than Job duration`   |   The total duration of all your Phases cannot exceed the Job duration.   |
 |   `Burstable instance type ml.t2.medium is not allowed`   |   We don't support load testing on t2 instance family because burstable instances do not provide consistent performance.   |
 
@@ -38,4 +33,4 @@ When you kick off an Inference Recommender job, you should see endpoints being c
 
 3. In the navigation pane of the Amazon CloudWatch, choose **Logs**\. Select **Log groups**\.
 
-4. Search for the log group called `/aws/sagemaker/Endpoints/sm-epc-*`\. Select the log group\.
+4. Search for the log group called /aws/sagemaker/Endpoints/sm-epc-*. Select the log group based on your most recent Inference Recommender job. 
